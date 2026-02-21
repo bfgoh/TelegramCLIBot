@@ -191,12 +191,11 @@ def setup_handlers():
         try:
             command_str = message.text.split(" ", 1)[1]
             command_output = commands.execute_shell_command(command_str)
-            logger.info(f"THIS IS THE COMMAND OUTPUT {command_output}")
-            # for i in range(0, len(command_output), 4096):
-            bot.reply_to(
-                message, f"<pre>aaaaa</pre>", parse_mode="HTML"
-            )
-            time.sleep(0.5)
+            for i in range(0, len(command_output), 4096):
+                bot.reply_to(
+                    message, f"<pre>{command_output[i : i + 4096]}</pre>", parse_mode="HTML"
+                )
+                time.sleep(0.5)
 
         except IndexError:
             bot.reply_to(
