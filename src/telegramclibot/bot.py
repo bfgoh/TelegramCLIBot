@@ -193,7 +193,7 @@ def setup_handlers():
             command_output = commands.execute_shell_command(command_str)
             for i in range(0, len(command_output), 4096):
                 bot.reply_to(
-                    message, f"<pre>{command_output[i : i + 4096]}</pre>", parse_mode="HTML"
+                    message, f"<pre></pre>", parse_mode="HTML"
                 )
                 time.sleep(0.5)
 
